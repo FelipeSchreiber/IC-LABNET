@@ -167,7 +167,7 @@ PT_THREAD(send_values(struct httpd_state *s))
       case 15: var= "9375";break;
       default: var= "0000";break;
      }
-     ADD("Media luz: %u.%s</br>",media/HISTORY,var);
+     ADD("<h1>Media luz: %u.%s</h1>\n""Feito por Felipe Schreiber",media/HISTORY,var);
      SEND_STRING(&s->sout, buf);
     }
   }
