@@ -148,7 +148,26 @@ PT_THREAD(send_values(struct httpd_state *s))
      for(i = 0; i < HISTORY; i++)
       media +=light1[i];
      blen=0;
-     ADD("Media luz: %u.%u</br>",media/HISTORY,media%HISTORY);
+     char *var;
+     switch(media%HISTORY){
+      case 1: var= "0625";break;
+      case 2: var= "1250";break;
+      case 3: var= "1875";break;
+      case 4: var= "2500";break;
+      case 5: var= "3125";break;
+      case 6: var= "3750";break;
+      case 7: var= "4375";break;
+      case 8: var= "5000";break;
+      case 9: var= "5625";break;
+      case 10: var= "6250";break;
+      case 11: var= "6875";break;
+      case 12: var= "7500";break;
+      case 13: var= "8125";break;
+      case 14: var= "8750";break;
+      case 15: var= "9375";break;
+      default: var= "0000";break;
+     }
+     ADD("Media luz: %u.%s</br>",media/HISTORY,var);
      SEND_STRING(&s->sout, buf);
     }
   }
